@@ -15,13 +15,13 @@ class ResponseController extends Controller
     }
 
     public function failResponse(array $data = null, array $error = null) {
-        response()->json([
+        return response()->json([
             'success' => false,
             'data' => null,
             'error' => [
                 'code' => $error['code'],
                 'message' => $error['message'],
-                'details' => $error['details'],
+                'details' => $error['details'] ?? null,
             ],
         ], 500);
     }

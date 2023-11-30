@@ -2,8 +2,10 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Auth\AuthenticationException;
+use Spatie\Permission\Exceptions\UnauthorizedException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -26,5 +28,32 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {   
+        // unauthorized Role  custom message
+        if ($exception instanceof UnauthorizedException) {
+            return response()->json([
+                'success' => false,
+                'error'   => [
+                    'code' => 'E0005',
+                    'message' => 'Access denied. User does not have the required role.',
+                ]
+            ], 403);
+        }
+
+        // unauthorized user custom message 
+        if ($exception instanceof AuthenticationException) {
+            return response()->json([
+                'success' => false,
+                'error'   => [
+                    'code' => 'E0001',
+                    'message' => 'Authentication required. Please log in.',
+                ]
+            ], 401);
+        }
+
+        return parent::render($request, $exception);
     }
 }
