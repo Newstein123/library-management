@@ -4,13 +4,14 @@ namespace App\Helpers;
 
 use App\Models\User;
 use App\Models\Notification;
+use App\Models\GeneralSetting;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class Helper {
     public static function storeImage($file, $dir) : string {
-        $filename = $file->getClientOriginalName();
+        $filename = time() . '_' . $file->getClientOriginalName();
         $path = Storage::putFileAs($dir, $file, $filename);
         return $path;
     }
@@ -35,5 +36,18 @@ class Helper {
             $q->where('name', $role);
         })->value('id');
         return $id;
+    }
+
+    public static function generalSetting($value) {
+        $gs = GeneralSetting::where('vale', $value)->first();
+        if($gs) {
+            if($gs && $gs->type == "file") {
+                return Storage::url($gs->value);
+            } else {
+                return $gs->value;
+            }
+        } else {
+            return "";
+        }
     }
 }

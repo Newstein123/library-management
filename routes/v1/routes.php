@@ -12,6 +12,26 @@ Route::prefix('category')->as('category:')->group(
 	base_path('routes/v1/category.php'),
 );
 
+// Location Routes 
+Route::prefix('location')->as('location:')->group(
+	base_path('routes/v1/location.php'),
+);
+
+// Language Routes 
+Route::prefix('language')->as('language:')->group(
+	base_path('routes/v1/language.php'),
+);
+
+// Author Routes 
+Route::prefix('author')->as('author:')->group(
+	base_path('routes/v1/author.php'),
+);
+
+// Publisher Routes 
+Route::prefix('publisher')->as('publisher:')->group(
+	base_path('routes/v1/publisher.php'),
+);
+
 // Account Routes
 Route::prefix('account')->as('account:')->group(
 	base_path('routes/v1/account.php'),
@@ -43,4 +63,9 @@ Route::prefix('transaction')->as('transaction:')->group(
 // Genreal Setting Routes 
 Route::prefix('general-setting')->as('general-setting:')->group(
 	base_path('routes/v1/general-setting.php'),
+);
+
+// Permissions Routes 
+Route::prefix('permission')->as('permission:')->group(
+	base_path('routes/v1/permission.php'),
 );

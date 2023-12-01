@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Throwable;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -39,6 +40,16 @@ class Handler extends ExceptionHandler
                 'error'   => [
                     'code' => 'E0005',
                     'message' => 'Access denied. User does not have the required role.',
+                ]
+            ], 403);
+        }
+
+        if ($exception instanceof AuthorizationException) {
+            return response()->json([
+                'success' => false,
+                'error'   => [
+                    'code' => 'E0005',
+                    'message' => 'Access denied. User does not have the required permission.',
                 ]
             ], 403);
         }

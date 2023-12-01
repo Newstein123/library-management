@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Helpers\Helper;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
@@ -68,6 +69,59 @@ class GeneralSettingController extends ResponseController
             ];
             return $this->successResponse($data);
         } catch (\Exception $e) {
+            $errors =  [
+                'code' => 'E0001',
+                'message' => 'An error occurred.',
+                'details' => $e->getMessage(),
+            ];
+            return $this->failResponse(null, $errors);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        $gs = GeneralSetting::findOrFail($id);
+        $value = "";
+        
+        $validator = Validator::make($request->all(), [
+            'value' => 'required|string|max:50|unique:general_settings',
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                'message' => "Validation Fails",
+            ];
+            $errors = $validator->errors();
+            return $this->successResponse($data, $errors);
+        }
+        try {
+            if($request->hasFile('image') ) {
+                $request->validate([
+                    'image' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg'
+                ]);
+                $file = $request->file('image');
+                if($request->hasFile('image')) {
+                    Helper::deleteImage($gs->value, '/');
+                    $path  = Helper::storeImage($file, 'image/logo');
+                }
+                
+                $value = $path;
+            } else {
+                $value = $request->value;
+            }
+
+            $gs->update([
+                'value' => $value, 
+            ]);
+
+            $data = [
+                'general-setting' => new GeneralSettingResource($gs),
+                'message' => "General Setting updated Successfully"
+            ];
+            return $this->successResponse($data);
+    
+            return to_route('admin.general');
+
+        } catch(\Exception $e) {
             $errors =  [
                 'code' => 'E0001',
                 'message' => 'An error occurred.',
