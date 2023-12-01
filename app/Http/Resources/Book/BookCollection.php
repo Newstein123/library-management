@@ -17,6 +17,7 @@ class BookCollection extends ResourceCollection
         return $this->collection->transform(function($item) {
             return  [
                  'code' => $item->code,
+                 'name' => $item->name,
                  'category' => $item->category->name,
                  'author' => $item->author->name,
                  'quantity' => $item->quantity,

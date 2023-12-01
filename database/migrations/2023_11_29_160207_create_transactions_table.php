@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('late_fee')->default(0)->comment('Late fee incurred for the transaction');
             $table->integer('total_fee')->default(0)->comment('Total fee for the transaction');
             $table->timestamp('expected_return_date')->comment('The expected/due return date');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

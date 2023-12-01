@@ -28,3 +28,19 @@ Route::prefix('user')->as('user:')->group(
 Route::prefix('book')->as('book:')->group(
 	base_path('routes/v1/book.php'),
 );
+
+// Book Request Routes 
+
+Route::prefix('book-request')->as('bookrequest:')->group(
+	base_path('routes/v1/bookrequest.php'),
+);
+
+// Transaction Routes 
+Route::prefix('transaction')->as('transaction:')->group(
+	base_path('routes/v1/transaction.php'),
+);
+
+// Genreal Setting Routes 
+Route::prefix('general-setting')->as('general-setting:')->group(
+	base_path('routes/v1/general-setting.php'),
+);
