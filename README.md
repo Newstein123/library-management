@@ -37,19 +37,19 @@ This is a Laravel application with Docker support using Laravel Sail.
 6. Start the Laravel Sail development environment:
 
     ```
-    sail up ```
+    sail up
 
 ## Admin Login
 
-username - admin@gmail.com
-password - password 
+- username - admin@gmail.com
+- password - password 
 
 ## Editor Login
 
-## username - editor@gmail.com
-password - password 
+- username - editor@gmail.com
+- password - password 
 
 ## User Login
 
-username - user@gmail.com
-password - password 
+- username - user@gmail.com
+- password - password 
