@@ -13,7 +13,7 @@ Route::prefix('/')->middleware('auth:sanctum', 'role:member')->group(function ()
     Route::post('create', [BookRequestConroller::class, 'store']);
 });
 
-Route::prefix('/')->middleware('auth:sanctum', 'role:admin')->group(function () {
-    Route::get('/', [BookRequestConroller::class, 'index']);
-    Route::put('edit/{id}', [BookRequestConroller::class, 'update']);
+Route::prefix('/')->middleware('auth:sanctum', 'role:admin|editor')->group(function () {
+    Route::get('/', [BookRequestConroller::class, 'index'])->middleware('permission:view bookrequest');
+    Route::put('edit/{id}', [BookRequestConroller::class, 'update'])->middleware('permission:edit bookrequest');
 });

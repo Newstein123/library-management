@@ -132,7 +132,7 @@ class AuthService extends ResponseController {
                     'identification_no' => $request->identification_no,
                 ]);
 
-                $user->assignRole('user');
+                $user->assignRole('member');
                 
                 // create token 
         

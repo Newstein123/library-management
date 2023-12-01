@@ -14,5 +14,6 @@ Route::prefix('admin/')->middleware('auth:sanctum', 'role:admin')->group(functio
 Route::prefix('member/')->middleware('auth:sanctum', 'role:member')->group(function () {
     Route::get('/{id}', [MemberAccountController::class, 'show']);
     Route::put('edit/{id}', [MemberAccountController::class, 'update']);
+    Route::put('change-password/{id}', [AdminAccountController::class, 'change_password']);
     Route::delete('delete/{id}', [MemberAccountController::class, 'delete']);
 });

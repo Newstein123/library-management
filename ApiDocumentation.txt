@@ -1,0 +1,104 @@
+# Api Documentation
+
+## Auth Routes 
+
+/api/v1/auth/login - Post - user and admin login
+/api/v1/auth/register - Post - user registeration
+/api/v1/auth/logout - Post - logout
+
+## Book Routes
+
+/api/v1/book - Get - get all books 
+/api/v1/book/{id} - Get - get one book
+/api/v1/book/create - Post - create  book
+/api/v1/book/edit/{id} - Put - update book
+/api/v1/book/delete/{id} - Delete - delete book
+
+## Category Routes
+
+/api/v1/category - Get - get all categorys 
+/api/v1/category/{id} - Get - get one category
+/api/v1/category/create - Post - create  category - need admin or editor role
+/api/v1/category/edit/{id} - Put - update category - need admin or editor role
+/api/v1/category/delete/{id} - Delete - delete category - need admin or editor role
+
+## Publisher Routes
+
+/api/v1/publisher - Get - get all publishers -
+/api/v1/publisher/{id} - Get - get one publisher 
+/api/v1/publisher/create - Post - create  publisher - need admin or editor role
+/api/v1/publisher/edit/{id} - Put - update publisher -need admin or editor role
+/api/v1/publisher/delete/{id} - Delete - delete publisher -need admin or editor role
+
+## Language Routes
+
+/api/v1/language - Get - get all languages -
+/api/v1/language/{id} - Get - get one language 
+/api/v1/language/create - Post - create  language - need admin or editor role
+/api/v1/language/edit/{id} - Put - update language -need admin or editor role
+/api/v1/language/delete/{id} - Delete - delete language -need admin or editor role
+
+## Author Routes
+
+/api/v1/author - Get - get all authors -
+/api/v1/author/{id} - Get - get one author 
+/api/v1/author/create - Post - create  author - need admin or editor role
+/api/v1/author/edit/{id} - Put - update author -need admin or editor role
+/api/v1/author/delete/{id} - Delete - delete author -need admin or editor role
+
+## Book Location Routes
+
+/api/v1/location - Get - get all locations -
+/api/v1/location/{id} - Get - get one location 
+/api/v1/location/create - Post - create  location - need admin or editor role
+/api/v1/location/edit/{id} - Put - update location -need admin or editor role
+/api/v1/location/delete/{id} - Delete - delete location -need admin or editor role
+
+## Member Routes
+
+/api/v1/user - Get - get all members - need admin or editor role
+/api/v1/user/{id} - Get - get one member - need admin or editor role
+/api/v1/user/change-status{id} - Get - change user status - need admin or editor role
+
+## Acount Setting Routes
+
+### member account
+
+/api/v1/account/member/{id} - Get - get Member profile 
+/api/v1/account/member/edit/{id} - Put - update Member profile 
+/api/v1/account/member/change-password/{id} - Put - change Member password 
+/api/v1/account/member/delete/{id} - Delete - Delete Member account 
+
+### admin account
+
+/api/v1/account/admin/{id} - Get - get admin profile - need admin or editor role
+/api/v1/account/admin/edit/{id} - Put - update admin profile - need admin or editor role
+/api/v1/account/admin/change-password/{id} - Put - change admin password - need admin or editor role
+
+## Book Request Routes 
+
+/api/v1/book-request - Get - get all book requests 
+/api/v1/book-request/user/{id} - Get - get user's book requests
+/api/v1/book-request/{id} - Get - get one book requests 
+/api/v1/book-request/create - Post - make book request - need user role
+/api/v1/book-request/edit/{id} - Put - update book request status - need admin or editor role
+
+## Transaction routes 
+
+/api/v1/transaction - Get - get all transactions
+/api/v1/transaction/{id} - Get - get one transactions
+/api/v1/transaction/user/{id} - Get - get user's transactions
+/api/v1/transaction/user/return-book - Put - return book to librian - need admin or editor role
+
+## General Setting Routes 
+
+/api/v1/general-setting - Get - get all general-settings
+/api/v1/general-setting/create - Post - Create general setting
+/api/v1/general-setting/edit/1 - Put - update general setting
+
+## Permission Routes
+
+/api/v1/permission - Get - get all permissions
+/api/v1/permission/give/{roleId} - Post - give permission to role
+/api/v1/permission/revoke/{roleId} - Post - revoke permission to role
+
