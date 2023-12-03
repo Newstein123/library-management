@@ -39,6 +39,10 @@ This is a Laravel application with Docker support using Laravel Sail.
     ```
     sail up
 
+## Postman Collectoin 
+
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/22024670-35a8a03f-c3c9-4bfe-805f-89f8e175b9a3?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D22024670-35a8a03f-c3c9-4bfe-805f-89f8e175b9a3%26entityType%3Dcollection%26workspaceId%3D22c2a290-717f-4e14-98b4-d81a79f84831)
+
 ## Admin Login
 
 - username - admin@gmail.com
